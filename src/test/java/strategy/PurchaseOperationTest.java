@@ -4,8 +4,7 @@ import model.FruitTransaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import service.Storage;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PurchaseOperationTest {
     private OperationHandler handler;

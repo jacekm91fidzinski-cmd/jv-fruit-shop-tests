@@ -1,12 +1,10 @@
 package service;
 
+import java.util.List;
 import model.FruitTransaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DataConverterImplTest {
     private DataConverter converter;
