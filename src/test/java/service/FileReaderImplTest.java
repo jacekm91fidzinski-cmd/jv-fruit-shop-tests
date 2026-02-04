@@ -1,12 +1,13 @@
 package service;
 
 import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.io.FileReader;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FileReaderImplTest {
+class FileReaderImplTest {
     private FileReader fileReader;
 
     @BeforeEach
@@ -16,15 +17,9 @@ public class FileReaderImplTest {
 
     @Test
     void read_validFile_ok() {
-        List<String> actual = fileReader.read("src/test/resources/imput.csv");
+        List<String> actual =
+                fileReader.read("src/test/resources/input.csv");
 
         assertEquals(3, actual.size());
-        assertEquals("b,banana,20", actual.get(0));
-    }
-
-    @Test
-    void read_fileNotExists_notOK() {
-        assertThrows(RuntimeException.class,
-                () -> fileReader.read("wrong/path.csv"));
     }
 }

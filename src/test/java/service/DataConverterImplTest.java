@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+
 import model.FruitTransaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,4 +27,3 @@ class DataConverterImplTest {
         assertEquals(20, result.get(0).getQuantity());
     }
 }
-
