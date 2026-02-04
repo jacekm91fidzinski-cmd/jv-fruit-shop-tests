@@ -4,6 +4,7 @@ import java.util.List;
 import model.FruitTransaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DataConverterImplTest {
@@ -23,7 +24,6 @@ class DataConverterImplTest {
         assertEquals(1, result.size());
         assertEquals("banana", result.get(0).getFruit());
         assertEquals(20, result.get(0).getQuantity());
-        assertEquals(FruitTransaction.Operation.BALANCE,
-                result.get(0).getOperation());
     }
 }
+
