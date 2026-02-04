@@ -1,9 +1,11 @@
-package strategy;
+package core.basesyntax.strategy;
 
-import model.FruitTransaction;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import core.basesyntax.model.FruitTransaction;
+import core.basesyntax.service.Storage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import service.Storage;
 
 class BalanceOperationTest {
     private OperationHandler handler;

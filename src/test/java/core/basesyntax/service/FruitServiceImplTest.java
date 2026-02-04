@@ -1,6 +1,8 @@
-package service;
+package core.basesyntax.service;
 
-import model.FruitTransaction;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import core.basesyntax.model.FruitTransaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,11 +1,11 @@
-package strategy;
+package core.basesyntax.strategy;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import model.FruitTransaction;
+import core.basesyntax.model.FruitTransaction;
+import core.basesyntax.service.Storage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import service.Storage;
 
 class PurchaseOperationTest {
     private OperationHandler handler;
