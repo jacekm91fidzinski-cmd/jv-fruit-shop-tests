@@ -1,29 +1,30 @@
-package core.basesyntax.strategy;
+package basesyntax.strategy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import core.basesyntax.model.FruitTransaction;
-import core.basesyntax.service.Storage;
+import basesyntax.db.Storage;
+import basesyntax.model.FruitTransaction;
+import basesyntax.service.OperationHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class SupplyOperationTest {
+
     private OperationHandler handler;
 
     @BeforeEach
     void setUp() {
         handler = new SupplyOperation();
-        Storage.storage.clear();
+        Storage.clear();
     }
 
     @Test
     void apply_validSupply_ok() {
         FruitTransaction transaction =
-                new FruitTransaction(FruitTransaction.Operation.SUPPLY,
-                        "apple", 20);
+                new FruitTransaction(FruitTransaction.Operation.SUPPLY, "apple", 20);
 
         handler.apply(transaction);
 
-        assertEquals(20, Storage.storage.get("apple"));
+        assertEquals(20, Storage.getFruits().get("apple"));
     }
 }
