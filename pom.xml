@@ -24,14 +24,7 @@
     </properties>
 
     <dependencies>
-        <!-- KOD, KTÓRY TESTUJEMY -->
-        <dependency>
-            <groupId>mate-academy</groupId>
-            <artifactId>jv-fruit-shop</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <!-- JUNIT 5 -->
+        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -50,7 +43,7 @@
     <build>
         <plugins>
 
-            <!-- KOMPILATOR -->
+            <!-- COMPILER -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -62,7 +55,7 @@
                 </configuration>
             </plugin>
 
-            <!-- TESTY -->
+            <!-- TESTS -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
