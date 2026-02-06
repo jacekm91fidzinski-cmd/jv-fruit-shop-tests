@@ -2,6 +2,7 @@ package basesyntax.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import basesyntax.db.Storage;
 import basesyntax.model.FruitTransaction;
 import basesyntax.service.impl.ShopServiceImpl;
 import basesyntax.strategy.BalanceOperation;
@@ -13,12 +14,18 @@ import basesyntax.strategy.SupplyOperation;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ShopServiceImplTest {
 
-    @Test
-    void process_validData_ok() {
+    private ShopService shopService;
+
+    @BeforeEach
+    void setUp() {
+        // 🔥 KLUCZOWE – bez tego test zawsze będzie failował
+        Storage.clear();
+
         Map<FruitTransaction.Operation, OperationHandler> handlers = new HashMap<>();
         handlers.put(FruitTransaction.Operation.BALANCE, new BalanceOperation());
         handlers.put(FruitTransaction.Operation.SUPPLY, new SupplyOperation());
@@ -26,15 +33,21 @@ class ShopServiceImplTest {
         handlers.put(FruitTransaction.Operation.RETURN, new ReturnOperation());
 
         OperationStrategy strategy = new OperationStrategyImpl(handlers);
-        ShopService shopService = new ShopServiceImpl(strategy);
+        shopService = new ShopServiceImpl(strategy);
+    }
 
+    @Test
+    void process_validData_ok() {
         List<FruitTransaction> transactions = List.of(
-                new FruitTransaction(FruitTransaction.Operation.SUPPLY, "banana", 10),
-                new FruitTransaction(FruitTransaction.Operation.PURCHASE, "banana", 3)
+                new FruitTransaction(FruitTransaction.Operation.SUPPLY, "apple", 10),
+                new FruitTransaction(FruitTransaction.Operation.SUPPLY, "banana", 5),
+                new FruitTransaction(FruitTransaction.Operation.PURCHASE, "apple", 3),
+                new FruitTransaction(FruitTransaction.Operation.RETURN, "banana", 2)
         );
 
         Map<String, Integer> result = shopService.process(transactions);
 
+        assertEquals(7, result.get("apple"));
         assertEquals(7, result.get("banana"));
     }
 }
